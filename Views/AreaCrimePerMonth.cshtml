@@ -1,0 +1,63 @@
+@page
+@model AreaCrimesPerMonthModel
+@{
+  ViewData["Title"] = "Crime per month in the Area";
+}
+
+<h2>Crime per month in the Area</h2>
+
+@{
+    if(@Model.EX == null)
+    {
+        <br />
+        <h3>Area: "@Model.Input"</h3>
+        <br />
+    }
+}
+
+@{
+   if (@Model.EX != null)
+	 {
+	   <br />
+		 <br />
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>  
+            <th>  
+                Month
+            </th>  
+            <th>  
+                NumCrime 
+            </th>  
+            <th>  
+                Crime %
+            </th>  
+        </tr>  
+    </thead>  
+    <tbody>  
+				
+        @foreach (var item in Model.CrimeList)  
+        {  
+            <tr>  
+                <td>  
+                    @item.Month
+                </td>  
+                <td>  
+                    @item.NumCrime
+                </td>  
+                <td>  
+                    @item.CrimePer
+                </td>  
+            </tr>  
+						
+        }  
+    </tbody>  
+</table> 
